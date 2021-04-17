@@ -10,16 +10,21 @@ import android.widget.Toast;
 
 import com.example.hiotclound.R;
 import com.example.hiotclound.base.BaseActivity;
+import com.example.hiotclound.test.dagger2test.DaggerPresenterComponent;
+import com.example.hiotclound.test.dagger2test.PresenterComponent;
 import com.example.hiotclound.test.mvptest.model.User;
+
+import javax.inject.Inject;
 
 public class TsetMVPActivity extends BaseActivity<TestView, TestPresenter> implements  TestView{
 
-    private  TestPresenter  presenter;
+    @Inject
+    TestPresenter  presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        presenter = new TestPresenter();
+        getComponent().inject(this);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_tset_mvp);
@@ -49,4 +54,12 @@ public class TsetMVPActivity extends BaseActivity<TestView, TestPresenter> imple
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * 创建注入器
+     * @return
+     */
+
+    public PresenterComponent getComponent(){
+        return DaggerPresenterComponent.builder().build();
+    }
 }
