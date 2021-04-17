@@ -19,6 +19,7 @@ import android.app.Activity;
 
 
 import com.example.hiotclound.injection.PerActivity;
+import com.example.hiotclound.test.dagger2test.ThirdObj;
 
 import dagger.Module;
 import dagger.Provides;
@@ -41,6 +42,11 @@ public class ActivityModule {
     @PerActivity
     Activity activity() {
         return this.activity;
+    }
+
+    @Provides
+    public ThirdObj getThirdObj(){
+        return new  ThirdObj();
     }
 
 }

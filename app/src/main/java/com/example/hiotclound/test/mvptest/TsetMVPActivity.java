@@ -24,7 +24,7 @@ public class TsetMVPActivity extends BaseActivity<TestView, TestPresenter> imple
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        getComponent().inject(this);
+        getActivityComponent().inject(this);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_tset_mvp);
@@ -59,7 +59,5 @@ public class TsetMVPActivity extends BaseActivity<TestView, TestPresenter> imple
      * @return
      */
 
-    public PresenterComponent getComponent(){
-        return DaggerPresenterComponent.builder().build();
-    }
+
 }

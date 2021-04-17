@@ -20,6 +20,7 @@ import com.example.hiotclound.MainActivity;
 import com.example.hiotclound.injection.PerActivity;
 import com.example.hiotclound.injection.module.ActivityModule;
 import com.example.hiotclound.injection.module.ApplicationModule;
+import com.example.hiotclound.test.mvptest.TsetMVPActivity;
 
 import dagger.Component;
 
@@ -35,6 +36,7 @@ public interface ActivityComponent {
 
     void inject(MainActivity mainActivity);
 
+    void  inject(TsetMVPActivity tsetMVPActivity);
     @Component.Builder
     interface ActivityComponentBuilder {
 
