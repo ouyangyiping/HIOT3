@@ -1,23 +1,26 @@
 package com.example.hiotclound.test.mvptest;
 
+import android.widget.TextView;
+
+import com.example.hiotclound.base.BasePresenter;
+import com.example.hiotclound.base.BaseView;
 import com.example.hiotclound.test.mvptest.model.User;
 
-public class TestPresenter {
+public class TestPresenter extends BasePresenter<TestView> {
 
-    private TestView view;
-
-    public TestPresenter(TestView view) {
-        this.view = view;
+    public TestPresenter() {
     }
+
 
     public void login(User user){
         if ("caiyu".equals(user.getUserName()) && "123".equals(user.getPassword())){
-            view.showMessage("登录成功");
+            getView().showMessage("登录成功");
         }
         else {
-            view.showMessage("登录失败");
+            getView().showMessage("登录失败");
 
         }
     }
+
 }
 
