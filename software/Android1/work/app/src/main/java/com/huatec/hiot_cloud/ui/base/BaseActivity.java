@@ -1,38 +1,40 @@
-package com.example.hiotclound.base;
+package com.huatec.hiot_cloud.ui.base;
 
 import android.app.Application;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.hiotclound.App;
-import com.example.hiotclound.injection.component.ActivityComponent;
-import com.example.hiotclound.injection.component.ApplicationComponent;
-import com.example.hiotclound.injection.component.DaggerActivityComponent;
-import com.example.hiotclound.injection.module.ActivityModule;
+import com.huatec.hiot_cloud.App;
+import com.huatec.hiot_cloud.injection.component.ActivityComponent;
+import com.huatec.hiot_cloud.injection.component.ApplicationComponent;
+import com.huatec.hiot_cloud.injection.component.DaggerActivityComponent;
+import com.huatec.hiot_cloud.injection.module.ActivityModule;
 
 /**
  * MVP架构Activity基类
  */
-public abstract class BaseActivity<V extends BaseView , P extends BasePresenter<V>> extends AppCompatActivity implements BaseView {
-     private P presenter;
+public abstract class BaseActivity<V extends BaseView, P extends BasePresenter<V>> extends AppCompatActivity implements BaseView {
+
+    private P presenter;
 
     /**
      * 活动注入器
      */
     private ActivityComponent mActivityComponent;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         injectIndependies();
         presenter = createPresenter();
-        presenter.setView((V)this);
+        if (presenter != null){
+            presenter.setView((V) this);
+        }
     }
 
     public abstract P createPresenter();
-
 
     public abstract void injectIndependies();
 
@@ -56,7 +58,6 @@ public abstract class BaseActivity<V extends BaseView , P extends BasePresenter<
     protected void onResume() {
         super.onResume();
     }
-
 
 
     public ActivityComponent getActivityComponent() {

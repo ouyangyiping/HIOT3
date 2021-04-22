@@ -1,4 +1,4 @@
-package com.example.hiotclound.base;
+package com.huatec.hiot_cloud.ui.base;
 
 /**
  * MVP架构presenter层基类
@@ -24,6 +24,6 @@ public class BasePresenter<V extends BaseView> {
     }
 
     public boolean viewAttached(){
-        return  view != null;
+        return view != null;
     }
 }
