@@ -3,7 +3,7 @@ package com.huatec.hiot_cloud.data;
 import com.huatec.hiot_cloud.test.networktest.LoginResultDTO;
 import com.huatec.hiot_cloud.test.networktest.ResultBase;
 import com.huatec.hiot_cloud.test.networktest.UserBean;
-import com.huatec.hiot_cloud.utils.Constans;
+import com.huatec.hiot_cloud.utils.Constants;
 
 import javax.inject.Inject;
 
@@ -30,7 +30,7 @@ public class DataManager {
      */
     public Observable<ResultBase<LoginResultDTO>> login(String userName, String password){
 
-       return service.login(userName,password, Constans.LOGIN_CODE_APP);
+       return service.login(userName,password, Constants.LOGIN_CODE_APP);
 
     }
 
@@ -69,7 +69,7 @@ public class DataManager {
         userBean.setUsername(userName);
         userBean.setPassword(password);
         userBean.setEmail(email);
-        userBean.setUserType(Constans.REGISTER_TYPE_NORMAL);
+        userBean.setUserType(Constants.REGISTER_TYPE_NORMAL);
         return service.register(userBean);
 
     }

@@ -66,7 +66,7 @@ public class TestNetworkPackActivity extends BaseActivity implements com.huatec.
         btnUpdateEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.updateEmail(etToken.getText().toString(),"oy74189@qq.com");
+                presenter.updateEmail(etToken.getText().toString(),"oy852@qq.com");
 
 
             }
@@ -77,7 +77,7 @@ public class TestNetworkPackActivity extends BaseActivity implements com.huatec.
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.register("oy741089","abc123","ou741089@qq.com");
+                presenter.register("oy852","abc123","ou852@qq.com");
 
             }
         });

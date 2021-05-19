@@ -26,8 +26,6 @@ public class TestNetworkPresenter extends BasePresenter<TestNetworkPackActivity>
 
                 } else if (resultBase != null && !TextUtils.isEmpty(resultBase.getMsg())) {
                     getView().showMessage(resultBase.getMsg());
-
-
                 }
 
             }
