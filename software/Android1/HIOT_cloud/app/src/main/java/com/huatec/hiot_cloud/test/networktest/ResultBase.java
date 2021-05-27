@@ -3,13 +3,14 @@ package com.huatec.hiot_cloud.test.networktest;
 import java.io.Serializable;
 
 public class ResultBase<T> implements Serializable {
+
     /**
      * 返回对象
      */
-     T data;
+    T data;
 
     /**
-     * 返回描述
+     * 返回消息
      */
     String msg;
 

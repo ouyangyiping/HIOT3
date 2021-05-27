@@ -129,7 +129,7 @@ public class LoginActivity extends BaseActivity<LoginView, LoginPresenter> imple
         String password = tiptetPassword.getText().toString();
         if (ValidateSucc(email, password)) {
             //请求服务端身份验证
-            LoadingUtil.showLoading(LoginActivity.this, "正在登录....");
+            LoadingUtil.showLoading(LoginActivity.this, "正在登录...");
             presenter.login(email, password);
         }
     }

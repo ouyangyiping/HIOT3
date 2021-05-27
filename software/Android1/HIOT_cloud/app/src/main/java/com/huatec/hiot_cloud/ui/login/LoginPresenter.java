@@ -26,7 +26,7 @@ import javax.inject.Inject;
     登录
      */
     public void login(String email, String password) {
-        subscribe(dataManager.login(email, password), new RequestCallback<ResultBase<LoginResultDTO>>() {
+        subscrib(dataManager.login(email, password), new RequestCallback<ResultBase<LoginResultDTO>>() {
             @Override
             public void onNext(ResultBase<LoginResultDTO> resultBase) {
                 if (resultBase.getStatus() == Constants.MSG_STATUS_SUCCESS) {
@@ -49,7 +49,7 @@ import javax.inject.Inject;
             @Override
             public void onError(Throwable e) {
                 super.onError(e);
-                getView().showMessage("当前网络无法访问，请稍后再试");
+                getView().showMessage(Constants.TOAST_MSG_NETWORK_FAIL);
             }
         });
     }
