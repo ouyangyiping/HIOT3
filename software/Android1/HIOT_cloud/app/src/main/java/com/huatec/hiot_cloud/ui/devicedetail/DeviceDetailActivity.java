@@ -1,6 +1,8 @@
 package com.huatec.hiot_cloud.ui.devicedetail;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -15,6 +17,7 @@ import com.huatec.hiot_cloud.data.bean.DeviceDetailBean;
 import com.huatec.hiot_cloud.data.bean.SwitchBean;
 import com.huatec.hiot_cloud.data.bean.UpdatastreamDataDto;
 import com.huatec.hiot_cloud.ui.base.BaseActivity;
+import com.huatec.hiot_cloud.ui.datastreamhistory.LineChartActivity;
 import com.huatec.hiot_cloud.utils.Constants;
 import com.huatec.hiot_cloud.utils.ImageUtils;
 
@@ -22,6 +25,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class DeviceDetailActivity extends BaseActivity<DeviceDetailView, DeviceDetailPresenter> implements DeviceDetailView {
 
@@ -59,6 +63,11 @@ public class DeviceDetailActivity extends BaseActivity<DeviceDetailView, DeviceD
      * 设备id
      */
     private String deviceId;
+
+    /**
+     * 当前上行通道ID
+     */
+    private String upDataStreamId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,6 +141,7 @@ public class DeviceDetailActivity extends BaseActivity<DeviceDetailView, DeviceD
 //        }else{
 //            tvDeviceTitle.setText("未激活");
 //        }
+        upDataStreamId = null;
         tvDeviceTitle.setText(data.getTitle());
         tvDeviceState.setText(Constants.DEVICE_STATUS_ACTIVITY.equals(data.getStatus()) ? "已激活" : "未激活");
         ImageUtils.show(this, ivDeviceDtail, ImageUtils.getFullUrl(data.getDeviceimg()));
@@ -143,6 +153,7 @@ public class DeviceDetailActivity extends BaseActivity<DeviceDetailView, DeviceD
                 return;
             }
             if (Constants.DATA_STREAM_TYPE_SWITCH.equals(updatastreamDataDto.getData_type())) {
+                upDataStreamId = updatastreamDataDto.getUpDataStreamId();
                 tvDataStreamType.setText("开关通道");
                 switchDataStream.setVisibility(View.VISIBLE);
                 if (updatastreamDataDto.getDataList() != null && !updatastreamDataDto.getDataList().isEmpty()) {
@@ -173,4 +184,13 @@ public class DeviceDetailActivity extends BaseActivity<DeviceDetailView, DeviceD
     }
 
 
+    @OnClick(R.id.iv_data_stream_history)
+    public void onViewClicked() {
+        if (TextUtils.isEmpty(upDataStreamId)) {
+            return;
+        }
+        Intent intent = new Intent(this, LineChartActivity.class);
+        intent.putExtra(Constants.INTENT_EXTRA_UP_DATASTREAM_ID, upDataStreamId);
+        startActivity(intent);
+    }
 }

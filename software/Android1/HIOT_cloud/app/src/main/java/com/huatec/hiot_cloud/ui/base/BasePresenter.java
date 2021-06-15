@@ -69,7 +69,7 @@ public class BasePresenter<V extends BaseView>  {
     /**
      * 回调类
      */
-    public abstract class RequestCallback<T>{
+    public class RequestCallback<T> {
 
         private static final String TAG = "RequestCallback";
 
